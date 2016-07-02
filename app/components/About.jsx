@@ -13,7 +13,11 @@ var React = require("react");
 //es6 method:
 var About = (props) => {
     return (
-        <h3>About Component</h3>
+        <div>
+            <h1 className="text-center">About Page</h1>
+            <p>This is a simple weather application built with JavaScript on the React Framework</p>
+            
+        </div>
     )
 };
 
