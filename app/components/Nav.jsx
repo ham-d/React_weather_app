@@ -20,6 +20,14 @@ var {Link, IndexLink} = require("react-router");
 var Nav = React.createClass({
     onSearch: function(e) {
         e.preventDefault();
+        var location = this.refs.search.value;
+        //encode URI helps transform strings to readable code. Ex: spaces turn to %20
+        var encodedLocation = encodeURIComponent(location);
+        if(location.length > 0){
+            this.refs.search.value = '';
+            window.location.hash=`#/?location=${encodedLocation}`;
+        } 
+        
     },
     
     render: function(){
@@ -47,7 +55,7 @@ var Nav = React.createClass({
                     <form onSubmit={this.onSearch}>
                         <ul className="menu">
                             <li>
-                                <input type="search" placeholder="search city" />
+                                <input type="search" ref="search" placeholder="search city" />
                             </li>
                             <li>
                                 <input type="submit" className="button" value="Get Weather"/>
