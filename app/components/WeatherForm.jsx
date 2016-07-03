@@ -4,10 +4,12 @@ var WeatherForm = React.createClass({
     onFormSubmit: function(e){
         e.preventDefault();
         var location = this.refs.location.value;
+        var encodedLocation = encodeURIComponent(location);
         
         if(location.length > 0) {
             this.refs.location.value = '';
             this.props.onSearch(location);
+            window.location.hash=`#/?location=${encodedLocation}`;
         }
     },
     render: function() {
